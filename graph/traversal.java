@@ -39,4 +39,17 @@ public class traversal {
 
     }
 
+
+    public static void dfs(ArrayList<edge>[] graph , boolean vist[], int curr){
+        System.out.println(curr);
+        vist[curr] = true;
+
+        for(int i = 0 ; i<graph[curr].size();i++){
+            edge e = graph[curr].get(i);
+            if(!vist[curr]){
+                dfs(graph, vist, e.dest);
+            }
+        }
+    }
+
 }
