@@ -5,47 +5,46 @@ import java.util.ArrayList;
 class graph {
 
     static class edge{
-        int src ;
-        int dest;
+        int src;
+        int dist;
         int weight;
 
-        public edge(int s ,int d , int w ){
-            this.src = s;
-            this.dest = d;
-            this.weight=w;
+        public edge(int i, int j, int k) {
+            this.src = i ;
+            this.dist = j;
+            this.weight = k;
         }
-
 
     }
+
     public static void main(String[] args) {
-        int v = 5;
-        ArrayList<edge>[] graph = new ArrayList[v];
+        int v = 4;
+        ArrayList<edge> graph[] = new ArrayList[5];
 
         for(int i = 0 ; i<v;i++){
-            graph[i] = new ArrayList<>();
+            graph[i]= new ArrayList<>();
         }
 
+        // 0 vertex 
+        graph[0].add(new edge(0,1,1));
 
-        // 0 vertex :
-        graph[0].add(new edge(0, 1, 5));
+        // 1 vertex                
+        graph[1].add(new edge(1,0,1));
+        graph[1].add(new edge(1,2,1));
+        graph[1].add(new edge(1,3,1));
 
-        // 1 vertex : 
-        graph[1].add(new edge(1, 0, 5));
-        graph[1].add(new edge(1, 2, 1));
-        graph[1].add(new edge(1, 3, 3));
+        // 2 vertex
+        graph[2].add(new edge(2, 1, 3));
+        graph[2].add(new edge(2, 3, 3));
+        
+        // 3 vertex
+        graph[3].add(new edge(3, 1, 1));
+        graph[3].add(new edge(3, 2, 1));
 
-        // 2 vertex : 
-        graph[2].add(new edge(2, 1, 1));
-        graph[2].add(new edge(2, 3, 1));
-        graph[2].add(new edge(2, 4, 2));
-
-
-        for(int i = 0 ; i<graph[2].size();i++){
-            edge e = graph[2].get(i);
-            System.out.println(e.dest);
+        for(int i = 0 ; i<graph[3].size();i++){
+            edge e = graph[3].get(i);
+            System.out.println(e.dist);
         }
-
-
 
     }
     
