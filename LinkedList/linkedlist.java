@@ -68,6 +68,33 @@ public class linkedlist {
             temp.next = newnode;
             
         }
+
+        public int size(){
+            node temp = head;
+            int i = 0 ;
+            while (temp!=null) {
+                i++;
+                temp = temp.next;
+            }
+            return i;
+        }
+
+        public int removefirst(){
+            int val = head.data;
+            head = head.next;
+            return val;
+        }
+        public int removelast(){
+            node prev = head;
+        for(int i = 0 ; i<size()-1;i++){
+            prev = prev.next;
+        }
+        int val = tail.data;
+        prev.next = null;
+        tail = prev;
+        return val;
+
+        }
        public static void main(String[] args) {
             linkedlist ll = new linkedlist();
             ll.addfirst(1);
@@ -75,10 +102,14 @@ public class linkedlist {
             ll.addfirst(3);
             ll.addfirst(4);
             ll.addfirst(5);
-
             ll.addmiddle(6, 2);
             
-            ll.printt();
+
+            System.out.println(ll.removelast());
+
+           
+
+            
             
        }
 }
