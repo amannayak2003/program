@@ -117,6 +117,27 @@ public class operation {
         }
     }
 
+    public void nthfromlast(int n){
+        node temp = head;
+        int i = 0 ;
+        while (temp!=null) {
+            i++;
+            temp = temp.next;
+        }
+
+        if(n==i){
+            head = head.next;
+            return ;
+        }
+        node prev = head;
+        int j = 1;
+        while(j<i-n){
+            prev = prev.next;
+            j++;
+        }
+        prev.next = prev.next.next;
+    }
+
     public static void main(String[] args) {
         operation ll = new operation();
         ll.addfirst(1);
@@ -124,10 +145,11 @@ public class operation {
         ll.addfirst(3);
         ll.addfirst(4);
         ll.addfirst(5);
-        
-    //    ll.printt();
-       ll.reverse();
-       ll.printt();
+        ll.printt();
+
+        ll.nthfromlast(3);
+        System.out.println(" ");
+        ll.printt();
 
     }
 
