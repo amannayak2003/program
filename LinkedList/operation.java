@@ -138,18 +138,58 @@ public class operation {
         prev.next = prev.next.next;
     }
 
+
+    public node midnode(node head){
+
+        node slow = head;
+        node fast = head;
+        while(fast!=null&&fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow;
+    }
+
+    public boolean palidrome(){
+        // find mid
+        node mid = midnode(head);
+        // reverse the half list
+        node curr = mid;
+        node prev = null;
+        node next;
+        while (curr!=null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        node left = head;
+        node right = prev;
+
+        // check the left list with right
+        while (right!=null) {
+            if(left.data!=right.data){
+                return false;
+            }
+            right =right.next;
+            left = left.next;
+        }
+
+        return true;
+
+    }
+
     public static void main(String[] args) {
         operation ll = new operation();
         ll.addfirst(1);
         ll.addfirst(2);
-        ll.addfirst(3);
-        ll.addfirst(4);
-        ll.addfirst(5);
-        ll.printt();
+        ll.addfirst(2);
+        ll.addfirst(1);
+        
 
-        ll.nthfromlast(3);
-        System.out.println(" ");
-        ll.printt();
+        System.out.println(ll.palidrome());
 
     }
 
