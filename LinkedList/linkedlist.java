@@ -55,11 +55,28 @@ public class linkedlist {
                 }
             }
         }
+
+        public void addmiddle(int data,int idx){
+            node newnode = new node(data);
+            node temp = head;
+            int i = 0;
+            while(i<idx-1){
+                temp = temp.next;
+                i++;
+            }
+            newnode.next = temp.next;
+            temp.next = newnode;
+            
+        }
        public static void main(String[] args) {
             linkedlist ll = new linkedlist();
             ll.addfirst(1);
             ll.addfirst(2);
-            ll.addlast(3);
+            ll.addfirst(3);
+            ll.addfirst(4);
+            ll.addfirst(5);
+
+            ll.addmiddle(6, 2);
             
             ll.printt();
             
