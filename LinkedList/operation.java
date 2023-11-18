@@ -67,6 +67,55 @@ public class operation {
 
         return -1;
     }
+    public static int recursive(int key){
+        return recursivesearch(head , key);
+    }
+    
+
+    public static int recursivesearch(node head2, int key) {
+        if(head2 == null){
+            return -1;
+        }
+
+        if(head2.data==key){
+            return 0;
+        }
+        int idx = recursivesearch(head2.next, key);
+
+        if(idx==-1){
+            return -1;
+        }
+
+        return idx+1;
+    }
+
+
+    public void reverse(){
+        node prev = null;
+        node curr = tail = head;
+        node next;
+        while(curr!=null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+    }
+
+    public void printt(){
+        if(head==null){
+            System.out.println("linkedlist is empty");
+        }
+        else{
+            node temp = head;
+            while(temp!=null){
+                System.out.print(temp.data+" ");
+                temp = temp.next;
+            }
+
+        }
+    }
 
     public static void main(String[] args) {
         operation ll = new operation();
@@ -76,8 +125,9 @@ public class operation {
         ll.addfirst(4);
         ll.addfirst(5);
         
-        System.out.println(ll.search(7));
-
+    //    ll.printt();
+       ll.reverse();
+       ll.printt();
 
     }
 
