@@ -165,8 +165,8 @@ public class operation {
             curr = next;
         }
 
-        node left = head;
         node right = prev;
+        node left = head;
 
         // check the left list with right
         while (right!=null) {
